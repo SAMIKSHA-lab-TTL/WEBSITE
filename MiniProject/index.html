@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GizmoGalaxy - Smart Tech</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Header */
+    .header {
+      position: relative;
+      background: #ffe8f0;
+      padding: 20px 20px 10px;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: bold;
+      color: #f26a8d;
+      margin-bottom: 10px;
+    }
+
+    .searchbar {
+      margin-bottom: 10px;
+    }
+
+    .searchbar input {
+      padding: 8px 15px;
+      width: 300px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+    }
+
+    .top-icons {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .top-icons button {
+      background: none;
+      border: none;
+      font-size: 22px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    /* Category Bar */
+    .category-bar {
+      background: #fff5f8;
+      padding: 10px 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .category-bar button {
+      background: none;
+      border: none;
+      color: #f26a8d;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .category-bar button:hover {
+      text-decoration: underline;
+    }
+
+    .banner {
+      text-align: center;
+      background: #f26a8d;
+      color: white;
+      padding: 50px 0;
+      font-size: 1.5em;
+    }
+
+    .section {
+      padding: 20px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+    }
+
+    .product {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+      border-radius: 10px;
+    }
+
+    .product img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .sale-tag {
+      color: red;
+    }
+
+    button {
+      margin: 5px;
+      padding: 6px 10px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    footer {
+      background: #ffe8f0;
+      text-align: center;
+      padding: 10px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo">GizmoGalaxy</div>
+    <div class="searchbar">
+      <input type="text" placeholder="Search for products..." onkeyup="filterProducts(this)">
+    </div>
+    <div class="top-icons">
+      <button title="Wishlist">❤️</button>
+      <button title="Cart">🛒</button>
+    </div>
+  </div>
+
+  <!-- Category Bar -->
+  <div class="category-bar">
+    <button onclick="filterByCategory('all')">All</button>
+    <button onclick="filterByCategory('laptop')">Laptops</button>
+    <button onclick="filterByCategory('smartphone')">Phones</button>
+    <button onclick="filterByCategory('smart tv')">TVs</button>
+    <button onclick="filterByCategory('headphones')">Headphones</button>
+  </div>
+
+  <!-- Banner -->
+  <div class="banner">
+    Up to 50% OFF on Smart Tech!
+  </div>
+
+  <!-- Products -->
+  <div class="section">
+    <h2>Products</h2>
+    <div class="product-grid" id="productGrid">
+      <div class="product" data-name="laptop">
+        <img src="laptop 1.jpg" alt="Laptop">
+        <h3>HP Laptop <span class="sale-tag">Sale!</span></h3>
+        <p><del>₹25,000</del> ₹23,500</p>
+        <button onclick="addToCart('Laptop')">🛒 Add to Cart</button>
+        <button onclick="toggleWishlist(this, 'Laptop')">🤍</button>
+      </div>
+      <div class="product" data-name="laptop">
+        <img src="laptop 2.jpg" alt="Laptop">
+        <h3>VICTUS Laptop <span class="sale-tag">Sale!</span></h3>
+        <p><del>₹30,000</del>₹28,500</p>
+        <button onclick="addToCart('Laptop')">🛒 Add to Cart</button>
+        <button onclick="toggleWishlist(this, 'Laptop')">🤍</button>
+      </div>
+      <div class="product" data-name="laptop">
+        <img src="laptop 3.jpg" alt="Laptop">
+        <h3>LENOVO Laptop <span class="sale-tag">Sale!</span></h3>
+        <p><del>₹27,000</del> ₹25,500</p>
+        <button onclick="addToCart('Laptop')">🛒 Add to Cart</button>
+        <button onclick="toggleWishlist(this, 'Laptop')">🤍</button>
+      </div>
+      <div class="product" data-name="laptop">
+        <img src="laptop 4.jpg" alt="Laptop">
+        <h3>acer Laptop <span class="sale-tag">Sale!</span></h3>
+        <p><del>₹20,000</del>₹18,500</p>
+        <button onclick="addToCart('Laptop')">🛒 Add to Cart</button>
+        <button onclick="toggleWishlist(this, 'Laptop')">🤍</button>
+      </div>
+
+      <div class="product" data-name="smartphone">
+        <img src="smart phone 1.jpg" alt="Smartphone">
+        <h3>Iphone <span class="sale-tag">Sale!</span></h3>
+        <p><del>₹1,50,000</del> ₹1,47,500</p>
+        <button onclick="addToCart('Smartphone')">🛒 Add to Cart</button>
+        <button onclick="toggleWishlist(this, 'Smartphone')">🤍</button>
+      </div>
+      <div class="product" data-name="smartphone">
+        <img src="smart phone 2.jpg" alt="Smartphone">
+        <h3>Vivo <span class="sale-tag">Sale!</span></h3>
+        <p><del>₹30,000</del> ₹27,500</p>
+        <button onclick="addToCart('Smartphone')">🛒 Add to Cart</button>
+        <button onclick="toggleWishlist(this, 'Smartphone')">🤍</button>
+      </div>
+      <div class="product" data-name="smartphone">
+        <img src="smart phone 3.jpg" alt="Smartphone">
+        <h3>Samsung<span class="sale-tag">Sale!</span></h3>
+        <p><del>₹25,000</del> ₹23,500</p>
+        <button onclick="addToCart('Smartphone')">🛒 Add to Cart</button>
+        <button onclick="toggleWishlist(this, 'Smartphone')">🤍</button>
+      </div>
+      <div class="product" data-name="smartphone">
+        <img src="samrt phone 4.jpg" alt="Smartphone">
+        <h3>Redmi<span class="sale-tag">Sale!</span></h3>
+        <p><del>₹24,000</del> ₹22,500</p>
+        <button onclick="addToCart('Smartphone')">🛒 Add to Cart</button>
+        <button onclick="toggleWishlist(this, 'Smartphone')">🤍</button>
+      </div>
+
+      <div class="product" data-name="smart tv">
+        <img src="smart tv 1.jpg" alt="TV">
+        <h3>SONY Smart TV</h3>
+        <p>₹27,000</p>
+        <button onclick="addToCart('Smart TV')">🛒 Add to Cart</button>
+        <button onclick="toggleWishlist(this, 'Smart TV')">🤍</button>
+      </div>
+      <div class="product" data-name="smart tv">
+        <img src="smart tv 2.jpg" alt="TV">
+        <h3>SAMSUNG Smart TV</h3>
+        <p>₹35,000</p>
+        <button onclick="addToCart('Smart TV')">🛒 Add to Cart</button>
+        <button onclick="toggleWishlist(this, 'Smart TV')">🤍</button>
+      </div>
+      <div class="product" data-name="smart tv">
+        <img src="smart 3.jpg" alt="TV">
+        <h3>MI Smart TV</h3>
+        <p>₹20,000</p>
+        <button onclick="addToCart('Smart TV')">🛒 Add to Cart</button>
+        <button onclick="toggleWishlist(this, 'Smart TV')">🤍</button>
+      </div>
+      <div class="product" data-name="smart tv">
+        <img src="smart tv 4.jpg" alt="TV">
+        <h3>INTEX Smart TV</h3>
+        <p>₹25,000</p>
+        <button onclick="addToCart('Smart TV')">🛒 Add to Cart</button>
+        <button onclick="toggleWishlist(this, 'Smart TV')">🤍</button>
+      </div>
+      <div class="product" data-name="headphones">
+        <img src="headphone 1.jpg" alt="Headphones">
+        <h3>Headphones</h3>
+        <p>₹2,500</p>
+        <button onclick="addToCart('Headphones')">🛒 Add to Cart</button>
+        <button onclick="toggleWishlist(this, 'Headphones')">🤍</button>
+      </div>
+      <div class="product" data-name="headphones">
+        <img src="headphone 2.jpg" alt="Headphones">
+        <h3>Wired Headphones</h3>
+        <p>₹750</p>
+        <button onclick="addToCart('Headphones')">🛒 Add to Cart</button>
+        <button onclick="toggleWishlist(this, 'Headphones')">🤍</button>
+      </div>
+      <div class="product" data-name="headphones">
+        <img src="headphone 3.jpg" alt="Headphones">
+        <h3>Wireless Headphones</h3>
+        <p>₹1,500</p>
+        <button onclick="addToCart('Headphones')">🛒 Add to Cart</button>
+        <button onclick="toggleWishlist(this, 'Headphones')">🤍</button>
+      </div>
+      <div class="product" data-name="headphones">
+        <img src="headphone 4.jpg" alt="Headphones">
+        <h3>Bluetooth</h3>
+        <p>₹1000</p>
+        <button onclick="addToCart('Headphones')">🛒 Add to Cart</button>
+        <button onclick="toggleWishlist(this, 'Headphones')">🤍</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 GizmoGalaxy. All rights reserved.
+  </footer>
+
+  <!-- Script -->
+  <script>
+    let cart = [];
+    let wishlist = [];
+
+    function filterProducts(inputElement) {
+      const input = inputElement.value.toLowerCase();
+      const products = document.querySelectorAll(".product");
+      products.forEach(product => {
+        const name = product.getAttribute("data-name");
+        product.style.display = name.includes(input) ? "block" : "none";
+      });
+    }
+
+    function filterByCategory(category) {
+      const products = document.querySelectorAll(".product");
+      products.forEach(product => {
+        const name = product.getAttribute("data-name");
+        if (category === "all" || name.includes(category)) {
+          product.style.display = "block";
+        } else {
+          product.style.display = "none";
+        }
+      });
+    }
+
+    function addToCart(productName) {
+      cart.push(productName);
+      alert(`${productName} added to cart!`);
+    }
+
+    function toggleWishlist(button, productName) {
+      const index = wishlist.indexOf(productName);
+      if (index === -1) {
+        wishlist.push(productName);
+        button.textContent = "❤️";
+        alert(`${productName} added to wishlist!`);
+      } else {
+        wishlist.splice(index, 1);
+        button.textContent = "🤍";
+        alert(`${productName} removed from wishlist.`);
+      }
+    }
+  </script>
+
+</body>
+</html>
